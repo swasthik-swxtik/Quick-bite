@@ -1,0 +1,122 @@
+/* ============================================================
+   Generic dialog styles — shared by every area (admin, customer,
+   employee). Moved out of pages/admin/admin.module.css when the
+   customer and employee pages gained confirmation dialogs.
+   ============================================================ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4) var(--space-10);
+  overflow-y: auto;
+  background: hsla(220, 14%, 7%, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  margin-top: var(--space-6);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  background: var(--clr-surface);
+  box-shadow: var(--shadow-lg);
+  animation: modalIn 180ms ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHead {
+  padding: var(--space-5) var(--space-6) var(--space-3);
+}
+
+.modalTitle {
+  font-size: 1.2rem;
+}
+
+.modalText {
+  margin-top: var(--space-2);
+  color: var(--clr-muted);
+  font-size: 0.88rem;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-6) var(--space-5);
+}
+
+.modalFoot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+}
+
+/* The close button is last in the DOM so that the dialog's initial focus lands
+   on the first field (or on Cancel in a confirm dialog), never on "×". */
+.closeBtn {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--clr-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background: var(--clr-border);
+  color: var(--clr-text);
+}
+
+.confirmList {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--clr-text-soft);
+  font-size: 0.88rem;
+}
+
+.confirmList li + li {
+  margin-top: var(--space-1);
+}
+
+.warnText {
+  color: hsl(45, 96%, 70%);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .modalFoot {
+    justify-content: stretch;
+  }
+
+  .modalFoot > * {
+    flex: 1 1 auto;
+  }
+}

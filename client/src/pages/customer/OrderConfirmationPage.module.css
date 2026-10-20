@@ -1,0 +1,222 @@
+/* OrderConfirmationPage.module.css — Receipt with one pickup code per outlet */
+
+/* ── States ─────────────────────────────────────────────────── */
+.stateBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+}
+
+.errorDetail {
+  max-width: 55ch;
+  color: var(--clr-muted);
+  font-size: 0.92rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6) 0 var(--space-10);
+  text-align: center;
+}
+
+.tick {
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+.headerText {
+  max-width: 60ch;
+  color: var(--clr-text-soft);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, auto));
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  background: var(--clr-surface);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: left;
+}
+
+.metaItem dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--clr-muted);
+}
+
+.metaItem dd {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.simulated {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+}
+
+/* ── Outlet cards ───────────────────────────────────────────── */
+.outlets {
+  margin-bottom: var(--space-10);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-5);
+  font-size: 1.25rem;
+}
+
+.outletGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5);
+}
+
+.outletCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.outletHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+}
+
+.outletName {
+  font-size: 1.05rem;
+}
+
+.outletCounter {
+  padding: var(--space-3) var(--space-5) 0;
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+}
+
+/* ── Pickup code ────────────────────────────────────────────── */
+.pickup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin: var(--space-4) var(--space-5);
+  padding: var(--space-4);
+  border: 1px dashed var(--clr-primary);
+  border-radius: var(--radius-md);
+  background: hsla(22, 95%, 55%, 0.07);
+  text-align: center;
+}
+
+.pickupLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-muted);
+}
+
+.pickupCode {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--clr-primary);
+}
+
+.pickupHint {
+  font-size: 0.78rem;
+  color: var(--clr-muted);
+}
+
+/* ── Items ──────────────────────────────────────────────────── */
+.items {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  font-size: 0.92rem;
+}
+
+.item + .item {
+  border-top: 1px solid var(--clr-border);
+}
+
+.itemName {
+  color: var(--clr-text-soft);
+}
+
+.itemQty {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.itemPrice {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.outletFoot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+  font-size: 0.9rem;
+  color: var(--clr-text-soft);
+}
+
+/* ── Actions ────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.note {
+  margin-top: var(--space-6);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--clr-muted);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+}

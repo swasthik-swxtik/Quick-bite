@@ -1,0 +1,156 @@
+/* Navbar.module.css — Global top navigation */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  z-index: 100;
+  background: hsla(220, 14%, 7%, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* ── Brand ──────────────────────────────────────────────────── */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.35rem;
+  margin-right: auto;
+}
+
+/* ── Links ──────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--clr-text-soft);
+  transition: color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--clr-text);
+}
+
+.linkActive {
+  color: var(--clr-primary);
+}
+
+/* ── Cart ───────────────────────────────────────────────────── */
+.cartLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--clr-text-soft);
+  transition: color var(--transition-fast);
+}
+
+.cartLink:hover {
+  color: var(--clr-text);
+}
+
+.cartBadge {
+  position: absolute;
+  top: -9px;
+  right: -16px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--radius-full);
+  background: var(--clr-primary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Auth area ──────────────────────────────────────────────── */
+.userArea,
+.authArea {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.userName {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: var(--clr-text-soft);
+}
+
+/* ── Mobile toggle ──────────────────────────────────────────── */
+.toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+}
+
+.toggleBar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--clr-text);
+}
+
+@media (max-width: 860px) {
+  .toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-6) var(--space-6);
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navOpen {
+    display: flex;
+  }
+
+  .userArea,
+  .authArea {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .userName {
+    max-width: none;
+  }
+}

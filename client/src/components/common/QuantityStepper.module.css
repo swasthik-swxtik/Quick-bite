@@ -1,0 +1,39 @@
+/* QuantityStepper.module.css — shared − / value / + control */
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--clr-text);
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--clr-border);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.value {
+  min-width: 24px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}

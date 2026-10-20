@@ -1,0 +1,170 @@
+/* OrdersPage.module.css — Customer order history */
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.kicker {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--clr-muted);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.headerMeta {
+  margin-top: var(--space-2);
+  font-size: 0.9rem;
+  color: var(--clr-text-soft);
+}
+
+.banner {
+  margin-bottom: var(--space-5);
+}
+
+/* ── Order list ─────────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  flex-wrap: wrap;
+}
+
+.row:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.rowMain {
+  min-width: 0;
+}
+
+.rowTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.orderRef {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.rowMeta {
+  margin-top: var(--space-2);
+  font-size: 0.84rem;
+  color: var(--clr-muted);
+}
+
+/* ── Pickup codes (one per counter, customer-only data) ─────── */
+.codes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.codeChip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: 2px var(--space-3);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  background: var(--clr-surface-2);
+}
+
+.codeOutlet {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--clr-muted);
+}
+
+.codeValue {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--clr-primary);
+}
+
+.rowSide {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.total {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Destructive, but not a data deletion — quiet enough to sit beside the
+   primary "Track order" action. */
+.removeBtn {
+  color: var(--clr-error);
+}
+
+.removeBtn:hover {
+  background: hsla(0, 84%, 60%, 0.12);
+  color: var(--clr-danger);
+}
+
+/* ── States ─────────────────────────────────────────────────── */
+.stateBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+}
+
+.stateIcon {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.stateText {
+  max-width: 52ch;
+  color: var(--clr-muted);
+  font-size: 0.92rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .row {
+    align-items: flex-start;
+  }
+
+  .rowSide {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

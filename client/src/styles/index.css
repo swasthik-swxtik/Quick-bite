@@ -1,0 +1,376 @@
+/* ============================================================
+   QuickBite — Global Design System
+   All CSS variables, reset, typography, and shared utilities
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ── CSS Custom Properties (Design Tokens) ──────────────────── */
+:root {
+  /* Brand colours */
+  --clr-primary:       hsl(22, 95%, 55%);   /* warm orange */
+  --clr-primary-dark:  hsl(22, 95%, 44%);
+  --clr-primary-light: hsl(22, 95%, 92%);
+  --clr-accent:        hsl(340, 82%, 58%);  /* vibrant pink-red */
+
+  /* Neutral palette */
+  --clr-bg:            hsl(220, 14%, 7%);   /* near-black */
+  --clr-surface:       hsl(220, 14%, 11%);  /* card background */
+  --clr-surface-2:     hsl(220, 14%, 16%);  /* elevated card */
+  --clr-border:        hsl(220, 14%, 22%);  /* subtle borders */
+  --clr-muted:         hsl(220, 10%, 50%);  /* placeholder / secondary text */
+  --clr-text:          hsl(220, 15%, 95%);  /* primary text */
+  --clr-text-soft:     hsl(220, 10%, 70%);  /* secondary text */
+
+  /* Status colours */
+  --clr-success:  hsl(142, 71%, 45%);
+  --clr-warning:  hsl(45, 96%, 58%);
+  --clr-error:    hsl(0, 75%, 58%);
+  --clr-info:     hsl(210, 85%, 60%);
+
+  /* Status: order states */
+  --clr-status-confirmed: hsl(210, 85%, 60%);
+  --clr-status-preparing: hsl(45, 96%, 58%);
+  --clr-status-ready:     hsl(142, 71%, 45%);
+  --clr-status-collected: hsl(220, 10%, 50%);
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* Border radius */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 30px hsla(22, 95%, 55%, 0.25);
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Layout */
+  --max-width: 1200px;
+  --navbar-height: 68px;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--clr-text);
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+h4 { font-size: 1.125rem; }
+
+p {
+  color: var(--clr-text-soft);
+  line-height: 1.7;
+}
+
+/* ── Layout Utilities ───────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.page-content {
+  padding-top: calc(var(--navbar-height) + var(--space-8));
+  min-height: 100vh;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--clr-primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--clr-surface-2);
+  color: var(--clr-text);
+  border-color: var(--clr-border);
+}
+.btn-secondary:hover {
+  background: var(--clr-border);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+.btn-ghost:hover {
+  background: var(--clr-primary-light);
+  color: var(--clr-primary-dark);
+}
+
+.btn-danger {
+  background: var(--clr-error);
+  color: #fff;
+}
+.btn-danger:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-sm { padding: var(--space-2) var(--space-4); font-size: 0.85rem; }
+.btn-lg { padding: var(--space-4) var(--space-8); font-size: 1.05rem; }
+
+/* ── Form Elements ──────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--clr-text-soft);
+  letter-spacing: 0.02em;
+}
+
+.form-input {
+  background: var(--clr-surface-2);
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  color: var(--clr-text);
+  padding: var(--space-3) var(--space-4);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--clr-primary);
+}
+
+.form-input::placeholder {
+  color: var(--clr-muted);
+}
+
+.form-error {
+  font-size: 0.85rem;
+  color: var(--clr-error);
+}
+
+/* ── Cards ──────────────────────────────────────────────────── */
+.card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-body {
+  padding: var(--space-5);
+}
+
+/* ── Badge / Status Pills ───────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-confirmed  { background: hsla(210, 85%, 60%, 0.15); color: var(--clr-status-confirmed); }
+.badge-preparing  { background: hsla(45, 96%, 58%, 0.15);  color: var(--clr-status-preparing); }
+.badge-ready      { background: hsla(142, 71%, 45%, 0.15); color: var(--clr-status-ready); }
+.badge-collected  { background: hsla(220, 10%, 50%, 0.15); color: var(--clr-status-collected); }
+.badge-partially-ready { background: hsla(142, 71%, 45%, 0.10); color: var(--clr-status-ready); }
+
+/* ── Loading / Spinner ──────────────────────────────────────── */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--clr-border);
+  border-top-color: var(--clr-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ── Alert / Toast ──────────────────────────────────────────── */
+.alert {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+}
+.alert-error   { background: hsla(0, 75%, 58%, 0.1);   border-color: hsla(0, 75%, 58%, 0.3);   color: hsl(0, 80%, 70%); }
+.alert-success { background: hsla(142, 71%, 45%, 0.1); border-color: hsla(142, 71%, 45%, 0.3); color: hsl(142, 71%, 65%); }
+.alert-info    { background: hsla(210, 85%, 60%, 0.1); border-color: hsla(210, 85%, 60%, 0.3); color: hsl(210, 85%, 75%); }
+
+/* ── Dividers ───────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--clr-border);
+  margin: var(--space-6) 0;
+}
+
+/* ── Glassmorphism surface ──────────────────────────────────── */
+.glass {
+  background: hsla(220, 14%, 11%, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsla(255, 255%, 255%, 0.06);
+}
+
+/* ── Gradient text ──────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--clr-bg); }
+::-webkit-scrollbar-thumb { background: var(--clr-border); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--clr-muted); }
+
+/* ── Responsive Grid Helpers ────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .container { padding: 0 var(--space-4); }
+}

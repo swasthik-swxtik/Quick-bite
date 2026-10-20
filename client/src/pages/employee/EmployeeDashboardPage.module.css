@@ -1,0 +1,377 @@
+/* EmployeeDashboardPage.module.css — Live kitchen queue */
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.kicker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--clr-muted);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  color: var(--clr-muted);
+}
+
+/* ── Live indicator ─────────────────────────────────────────── */
+.liveOn,
+.liveWait,
+.liveOff {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.liveOn {
+  color: var(--clr-success);
+}
+.liveOn .liveDot {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.liveWait {
+  color: var(--clr-warning);
+}
+
+.liveOff {
+  color: var(--clr-muted);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 hsla(142, 71%, 45%, 0.5);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 6px hsla(142, 71%, 45%, 0);
+  }
+}
+
+.banner {
+  margin-bottom: var(--space-5);
+}
+
+/* ── Counters ───────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  background: var(--clr-surface);
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--clr-muted);
+}
+
+.statReady {
+  border-color: hsla(142, 71%, 45%, 0.4);
+}
+.statReady .statValue {
+  color: var(--clr-status-ready);
+}
+
+/* ── Filters ────────────────────────────────────────────────── */
+.filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.filterHint {
+  margin: calc(var(--space-3) * -1) 0 var(--space-5);
+  font-size: 0.82rem;
+  color: var(--clr-muted);
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+  color: var(--clr-text-soft);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+
+.filter:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-text);
+}
+
+.filterActive {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+}
+
+.filterCount {
+  font-size: 0.75rem;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  background: hsla(220, 14%, 7%, 0.35);
+}
+
+/* ── Queue grid ─────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* A card hovering transform makes the queue jumpy — keep it still. */
+.card:hover {
+  transform: none;
+  box-shadow: var(--shadow-md);
+}
+
+.cardReady {
+  border-color: hsla(142, 71%, 45%, 0.45);
+  box-shadow: inset 3px 0 0 var(--clr-status-ready);
+}
+
+.cardFlash {
+  animation: arrive 2.4s ease-out 2;
+}
+
+@keyframes arrive {
+  0% {
+    background: hsla(22, 95%, 55%, 0.16);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+/* ── Card head ──────────────────────────────────────────────── */
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+}
+
+.headRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
+}
+
+.time {
+  font-size: 0.75rem;
+  color: var(--clr-muted);
+  white-space: nowrap;
+}
+
+.orderRef {
+  padding: var(--space-2) var(--space-5);
+  font-size: 0.78rem;
+  color: var(--clr-muted);
+  font-family: var(--font-heading);
+}
+
+/* ── Items ──────────────────────────────────────────────────── */
+.items {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-2);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-1) var(--space-5) var(--space-1) var(--space-5);
+  font-size: 0.9rem;
+}
+
+.qty {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--clr-text);
+  min-width: 2.2ch;
+}
+
+.itemName {
+  color: var(--clr-text-soft);
+}
+
+.itemPrice {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Card foot ──────────────────────────────────────────────── */
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: auto;
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--clr-border);
+}
+
+.subtotal {
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+}
+
+.subtotal strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--clr-text);
+}
+
+.doneMark {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-status-collected);
+}
+
+.footActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Quiet on purpose: archiving hides the row without deleting anything. */
+.archiveBtn {
+  color: var(--clr-muted);
+}
+
+/* ── Pickup code confirmation ───────────────────────────────── */
+.codeForm {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--clr-border);
+  background: hsla(220, 14%, 16%, 0.6);
+}
+
+.codeFormLabel {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 0.78rem;
+  color: var(--clr-text-soft);
+}
+
+.codeFormRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.codeInput {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-2) var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.rowError {
+  padding: var(--space-3) var(--space-5) var(--space-4);
+  font-size: 0.85rem;
+  color: hsl(0, 80%, 70%);
+}
+
+/* ── Empty / loading states ─────────────────────────────────── */
+.stateBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+}
+
+.stateIcon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.stateText {
+  max-width: 52ch;
+  color: var(--clr-muted);
+  font-size: 0.92rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,379 @@
+/* admin.module.css — shared styles for the admin dashboard (Stage 5).
+   Imported by AdminDashboardPage and every admin panel so that the class names
+   resolve to the same hashed values across the whole admin area. */
+
+/* ── Page shell ─────────────────────────────────────────────── */
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.kicker {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+}
+
+.title {
+  margin-top: var(--space-1);
+}
+
+.subtitle {
+  margin-top: var(--space-2);
+  max-width: 60ch;
+  color: var(--clr-text-soft);
+  font-size: 0.92rem;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ── Tabs ───────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--clr-border);
+  padding-bottom: var(--space-2);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--clr-text-soft);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab:hover {
+  color: var(--clr-text);
+  border-color: var(--clr-border);
+}
+
+.tabActive,
+.tabActive:hover {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+}
+
+.tabCount {
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  background: hsla(220, 14%, 7%, 0.35);
+  font-size: 0.75rem;
+}
+
+/* ── Toast / inline feedback ────────────────────────────────── */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.toastClose {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.toastClose:hover {
+  opacity: 1;
+}
+
+/* ── Panel ──────────────────────────────────────────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.panelHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.panelTitle {
+  font-size: 1.15rem;
+}
+
+.panelText {
+  margin-top: var(--space-1);
+  color: var(--clr-muted);
+  font-size: 0.88rem;
+}
+
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ── Rows (responsive list) ─────────────────────────────────── */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  background: var(--clr-surface);
+}
+
+.rowInactive {
+  opacity: 0.72;
+}
+
+.rowMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.rowTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.rowSub {
+  color: var(--clr-muted);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.rowTags {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+  color: var(--clr-text-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.tagOn {
+  border-color: hsla(142, 71%, 45%, 0.45);
+  background: hsla(142, 71%, 45%, 0.12);
+  color: hsl(142, 71%, 62%);
+}
+
+.tagOff {
+  border-color: hsla(0, 75%, 58%, 0.35);
+  background: hsla(0, 75%, 58%, 0.1);
+  color: hsl(0, 80%, 70%);
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ── Switch (active / available toggle) ─────────────────────── */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  background: var(--clr-surface-2);
+  color: var(--clr-text-soft);
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.switch:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.switchKnob {
+  width: 30px;
+  height: 16px;
+  flex: 0 0 30px;
+  border-radius: var(--radius-full);
+  background: hsla(220, 10%, 50%, 0.4);
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.switchKnob::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--transition-fast);
+}
+
+.switchOn {
+  border-color: hsla(142, 71%, 45%, 0.45);
+  color: hsl(142, 71%, 62%);
+}
+
+.switchOn .switchKnob {
+  background: var(--clr-success);
+}
+
+.switchOn .switchKnob::after {
+  transform: translateX(14px);
+}
+
+/* ── Outlet selector (menu panel) ───────────────────────────── */
+.selectorRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.selectorLabel {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--clr-text-soft);
+}
+
+.select {
+  min-width: 220px;
+}
+
+/* ── States ─────────────────────────────────────────────────── */
+.stateBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+  border: 1px dashed var(--clr-border);
+  border-radius: var(--radius-lg);
+}
+
+.stateIcon {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.stateText {
+  max-width: 46ch;
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+}
+
+/* Dialog styles live in components/common/Modal.module.css (shared by every
+   area). */
+
+/* ── Forms ──────────────────────────────────────────────────── */
+.form {
+  display: contents;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.formWide {
+  grid-column: 1 / -1;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: var(--clr-muted);
+}
+
+.priceWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rowActions {
+    justify-content: flex-start;
+  }
+
+  .formGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .select {
+    min-width: 0;
+    width: 100%;
+  }
+}

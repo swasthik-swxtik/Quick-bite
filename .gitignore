@@ -1,0 +1,75 @@
+# QuickBite — Dependencies
+node_modules/
+
+# Environment files (never commit these!)
+.env
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+
+# Additional environment files
+.env.*
+!.env.example
+
+# Test coverage
+coverage/
+
+# Database files and backups
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.sql.gz
+*.bak
+*.backup
+*.old
+*.orig
+*~
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.xz
+*.7z
+*.rar
+
+# Credentials, private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.ppk
+*.crt
+*.cer
+*.der
+*.csr
+id_rsa*
+id_ed25519*
+.npmrc
+.netrc
+credentials*.json
+service-account*.json
+secrets*.yml
+secrets*.yaml
+
+# Ignore environment files in all folders
+**/.env
