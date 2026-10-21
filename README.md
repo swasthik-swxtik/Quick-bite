@@ -4,6 +4,17 @@ A multi-outlet food court ordering system. Customers order from multiple stalls 
 
 ---
 
+## Tech Stack
+
+- **Frontend:** React 19, Vite, React Router, Axios, Socket.IO client
+- **Backend:** Node.js, Express 5, Socket.IO
+- **Database:** PostgreSQL
+- **Authentication:** JWT in HTTP-only cookies, with bcrypt password hashing
+- **Validation:** Joi
+- **Testing:** Node.js test runner (server), Vitest and Testing Library (client)
+
+---
+
 ## Prerequisites
 
 | Tool | Version |
@@ -51,10 +62,7 @@ cd server
 copy .env.example .env
 ```
 
-Open `server/.env` and set your PostgreSQL password:
-```
-DB_PASSWORD=your_actual_postgres_password
-```
+Open `server/.env` and set `DB_PASSWORD` to your local PostgreSQL password. Keep this file local—it is ignored by Git and should never be committed with real credentials.
 
 ### 4. Install server dependencies (already done if you followed setup)
 ```bash
@@ -91,17 +99,11 @@ App opens at: http://localhost:5173
 
 ---
 
-## Seeded Accounts (Development Only)
+## Development Seed Accounts
 
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@quickbite.com | password |
-| Pizza Palace employee | pizza@quickbite.com | password |
-| Pasta Point employee | pasta@quickbite.com | password |
-| Burger Barn employee | burger@quickbite.com | password |
-| Biryani Box employee | biryani@quickbite.com | password |
+The seed files create development accounts for an admin and outlet employees so you can exercise the staff and admin workflows locally. Their login details and passwords are intentionally not published in this README.
 
-> ⚠️ These are development passwords. Change them in production.
+Do not reuse these seeded accounts or their credentials in a deployed environment.
 
 ---
 
@@ -128,22 +130,46 @@ Quick-Bite/
 
 ---
 
-## API Endpoints (Stage 1)
+## API Endpoints
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| GET | `/api/health` | None | Health check |
-| POST | `/api/auth/register` | None | Register customer |
-| POST | `/api/auth/login` | None | Log in (any role) |
-| POST | `/api/auth/logout` | None | Log out |
-| GET | `/api/auth/me` | Cookie | Get current user |
+| Method | Path | Access | Description |
+|--------|------|--------|-------------|
+| GET | `/api/health` | Public | Health check |
+| POST | `/api/auth/register` | Public | Register customer |
+| POST | `/api/auth/login` | Public | Log in (any role) |
+| POST | `/api/auth/logout` | Public | Log out |
+| GET | `/api/auth/me` | Signed in | Get current user |
+| GET | `/api/outlets` | Public | List active outlets |
+| GET | `/api/outlets/:id` | Public | Get outlet details |
+| GET | `/api/outlets/:id/menu` | Public | Get an outlet's menu |
+| POST | `/api/orders` | Customer | Place an order |
+| GET | `/api/orders` | Customer | List own orders |
+| GET | `/api/orders/:id` | Customer (own) / Admin | Get order details |
+| DELETE | `/api/orders/:id/history` | Customer | Archive a completed order from history |
+| GET | `/api/employee/orders` | Employee / Admin | List orders for the employee's outlet |
+| PATCH | `/api/employee/outlet-orders/:id` | Employee / Admin | Update an outlet order's status |
+| DELETE | `/api/employee/outlet-orders/:id/history` | Employee / Admin | Archive a completed outlet order |
+| GET | `/api/admin/outlets` | Admin | List outlets |
+| POST | `/api/admin/outlets` | Admin | Create an outlet |
+| PUT | `/api/admin/outlets/:id` | Admin | Update an outlet |
+| DELETE | `/api/admin/outlets/:id` | Admin | Delete an outlet |
+| GET | `/api/admin/outlets/:outletId/menu` | Admin | List an outlet's menu |
+| POST | `/api/admin/outlets/:outletId/menu` | Admin | Create a menu item |
+| PUT | `/api/admin/menu-items/:id` | Admin | Update a menu item |
+| DELETE | `/api/admin/menu-items/:id` | Admin | Delete a menu item |
+| GET | `/api/admin/employees` | Admin | List employees |
+| POST | `/api/admin/employees` | Admin | Create an employee |
+| PUT | `/api/admin/employees/:id` | Admin | Update an employee |
+| DELETE | `/api/admin/employees/:id` | Admin | Delete an employee |
+| GET | `/api/admin/orders` | Admin | List all orders |
+| GET | `/api/admin/orders/:id` | Admin | Get any order's details |
 
 ---
 
 ## Implementation Stages
 
 - [x] **Stage 1** — Foundation: Database, Auth, Project Scaffold
-- [ ] **Stage 2** — Browsing: Outlet listing, Menu pages, Cart
-- [ ] **Stage 3** — Ordering: Checkout, Simulated payment, Order confirmation
-- [ ] **Stage 4** — Real-time: Employee dashboard, Status updates, Tracking page
-- [ ] **Stage 5** — Admin: Full admin dashboard, CRUD management
+- [x] **Stage 2** — Browsing: Outlet listing, Menu pages, Cart
+- [x] **Stage 3** — Ordering: Checkout, Simulated payment, Order confirmation
+- [x] **Stage 4** — Real-time: Employee dashboard, Status updates, Tracking page
+- [x] **Stage 5** — Admin: Full admin dashboard, CRUD management
